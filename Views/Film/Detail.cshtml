@@ -1,0 +1,33 @@
+﻿@model FilmDetailModel
+@{
+    ViewBag.Title = "Film Details";
+}
+
+<h2>@Model.Title</h2>
+<p><strong>Description:</strong> @Model.Description</p>
+<p><strong>Release Year:</strong> @Model.ReleaseYear</p>
+<p><strong>Language:</strong> @Model.Language</p>
+<p><strong>Length:</strong> @Model.Length min</p>
+<p><strong>Rating:</strong> @Model.Rating</p>
+
+<p><strong>Rental Rate:</strong> $@Model.RentalRate</p>
+<p><strong>Rental Duration:</strong> @Model.RentalDuration days</p>
+<p><strong>Replacement Cost:</strong> $@Model.ReplacementCost</p>
+
+<h4>Actors</h4>
+<ul>
+    @foreach (var actor in Model.Actors)
+    {
+        <li>@actor</li>
+    }
+</ul>
+
+<h4>Categories</h4>
+<ul>
+    @foreach (var category in Model.Categories)
+    {
+        <li>@category</li>
+    }
+</ul>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>

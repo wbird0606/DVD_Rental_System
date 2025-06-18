@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "新增 Staff-Role 對應";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "StaffRole", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="staffId">選擇員工</label>
+        @Html.DropDownList("staffId", (List<SelectListItem>)ViewBag.StaffList, "請選擇員工", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="roleId">選擇角色</label>
+        @Html.DropDownList("roleId", (List<SelectListItem>)ViewBag.RoleList, "請選擇角色", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">新增對應</button>
+    @Html.ActionLink("返回列表", "Index", null, new { @class = "btn btn-secondary" })
+}

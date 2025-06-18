@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Create Permission";
+}
+<h2>Create New Permission</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Name: @Html.TextBox("permissionName")
+    </p>
+    <button type="submit">Create</button>
+}

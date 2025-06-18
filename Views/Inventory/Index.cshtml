@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "查詢影片庫存";
+}
+
+<h2>影片庫存查詢</h2>
+
+@using (Html.BeginForm("Query", "Inventory", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="filmId">選擇影片：</label>
+        @Html.DropDownList("filmId", (List<SelectListItem>)ViewBag.FilmList, "-- 請選擇影片 --", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">查詢</button>
+}

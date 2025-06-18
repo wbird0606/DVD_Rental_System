@@ -1,0 +1,25 @@
+﻿@model RolePermissionViewModel
+@{
+    ViewBag.Title = "Edit Role Permissions";
+}
+<h2>Edit Permissions for Role ID: @Model.RoleId</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("roleId", Model.RoleId)
+
+    <ul>
+        @foreach (var p in Model.Permissions)
+        {
+            <li>
+                <label>
+                    <input type="checkbox" name="selectedPermissions" value="@p.PermissionId"
+                           @(Model.SelectedPermissionIds.Contains(p.PermissionId) ? "checked" : "") />
+                    @p.PermissionName
+                </label>
+            </li>
+        }
+    </ul>
+
+    <button type="submit">Save</button>
+}

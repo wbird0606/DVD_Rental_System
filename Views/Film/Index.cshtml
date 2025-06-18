@@ -1,0 +1,41 @@
+﻿@model List<DVD_Rental.Models.FilmModel>
+@{
+    ViewBag.Title = "影片清單";
+}
+
+<h2>影片清單</h2>
+
+<form method="get" class="form-inline mb-3">
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="搜尋片名" class="form-control mr-2" />
+    <button type="submit" class="btn btn-primary">搜尋</button>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>片名</th>
+            <th>描述</th>
+            <th>上映年份</th>
+            <th>語言</th>
+            <th>片長</th>
+            <th>分級</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var film in Model)
+        {
+        <tr>
+            <td>@film.Title</td>
+            <td>@film.Description</td>
+            <td>@film.ReleaseYear</td>
+            <td>@film.Language</td>
+            <td>@film.Length 分鐘</td>
+            <td>@film.Rating</td>
+            <td>
+                <a href="@Url.Action("Detail", "Film", new { id = film.FilmId })">@film.Title</a>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>

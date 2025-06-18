@@ -1,0 +1,36 @@
+﻿@model DVD_Rental.Models.DashboardViewModel
+
+<h2>Dashboard 總覽</h2>
+
+<div>
+    <h3>統計數據</h3>
+    <ul>
+        <li>影片總數: @Model.TotalFilms</li>
+        <li>顧客總數: @Model.TotalCustomers</li>
+        <li>目前租賃中數量: @Model.TotalRentals</li>
+        <li>分店數量: @Model.TotalStores</li>
+    </ul>
+</div>
+
+<div>
+    <h3>各分店可租影片數</h3>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>分店編號</th>
+                @*<th>分店名稱</th>*@
+                <th>可租影片數</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var store in Model.StoreInventories)
+            {
+                <tr>
+                    <td>@store.StoreId</td>
+                    @*<td>@store.StoreName</td>*@
+                    <td>@store.AvailableInventory</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

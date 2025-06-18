@@ -1,0 +1,42 @@
+﻿@model RentalHistoryModel
+@{
+    ViewBag.Title = "租借紀錄";
+    var selectedStoreId = ViewBag.SelectedStoreId as int?;
+}
+
+<h2>@Model.CustomerName 的租借紀錄</h2>
+
+@if (selectedStoreId.HasValue)
+{
+    <p>目前篩選分店：分店 @selectedStoreId</p>
+}
+else
+{
+    <p>目前篩選分店：所有分店</p>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>影片名稱</th>
+            <th>租借日期</th>
+            <th>歸還日期</th>
+            <th>費用</th>
+            <th>分店</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Rentals)
+        {
+            <tr>
+                <td>@item.FilmTitle</td>
+                <td>@item.RentalDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@(item.ReturnDate.HasValue ? item.ReturnDate.Value.ToString("yyyy-MM-dd HH:mm") : "尚未歸還")</td>
+                <td>$@item.Amount.ToString("0.00")</td>
+                <td>@item.StoreId</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Rental")" class="btn btn-default">返回查詢</a>

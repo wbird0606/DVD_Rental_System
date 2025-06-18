@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "查詢租借紀錄";
+}
+
+<h2>查詢客戶租借紀錄</h2>
+<hr />
+
+@using (Html.BeginForm("History", "Rental", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>選擇客戶</label>
+        @Html.DropDownList("customerId", (IEnumerable<SelectListItem>)ViewBag.Customers, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>選擇分店</label>
+        @Html.DropDownList("storeId", (IEnumerable<SelectListItem>)ViewBag.Stores, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">查詢</button>
+}

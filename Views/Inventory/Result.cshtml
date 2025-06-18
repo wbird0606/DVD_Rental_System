@@ -1,0 +1,26 @@
+﻿@model DVD_Rental.Models.InventoryStatusModel
+@{
+    ViewBag.Title = "庫存查詢結果";
+}
+
+<h2>@Model.Title 的庫存分佈</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>分店 ID</th>
+            <th>可用庫存數量</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var store in Model.StoreInventories)
+        {
+            <tr>
+                <td>@store.StoreId</td>
+                <td>@store.Available</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index")" class="btn btn-secondary">返回查詢</a>

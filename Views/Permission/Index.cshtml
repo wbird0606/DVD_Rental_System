@@ -1,0 +1,21 @@
+﻿@model List<PermissionModel>
+@{
+    ViewBag.Title = "Permission Management";
+}
+<h2>Permission List</h2>
+<p>@Html.ActionLink("Create New Permission", "Create")</p>
+
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.PermissionId</td>
+            <td>@p.PermissionName</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = p.PermissionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = p.PermissionId })
+            </td>
+        </tr>
+    }
+</table>

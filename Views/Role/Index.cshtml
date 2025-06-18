@@ -1,0 +1,21 @@
+﻿@model List<RoleModel>
+@{
+    ViewBag.Title = "Role Management";
+}
+<h2>Role List</h2>
+<p>@Html.ActionLink("Create New Role", "Create")</p>
+
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.RoleId</td>
+            <td>@r.RoleName</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = r.RoleId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = r.RoleId })
+            </td>
+        </tr>
+    }
+</table>

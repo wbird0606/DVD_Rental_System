@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "報表分析";
+    var categoryStats = ViewBag.CategoryStats as List<Tuple<string, int>>;
+    var topFilms = ViewBag.TopFilms as List<Tuple<string, int>>;
+    var storeStats = ViewBag.StoreStats as List<Tuple<int, int>>;
+}
+
+<h2>📊 報表分析</h2>
+
+<h4>🎬 類別別租借次數排行</h4>
+<table class="table table-striped">
+    <thead>
+        <tr><th>類別</th><th>租借次數</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in categoryStats)
+        {
+            <tr>
+                <td>@item.Item1</td>
+                <td>@item.Item2</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>📈 熱門影片 TOP 10</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr><th>片名</th><th>租借次數</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in topFilms)
+        {
+            <tr>
+                <td>@item.Item1</td>
+                <td>@item.Item2</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>🏬 各分店租借總數</h4>
+<table class="table table-hover">
+    <thead>
+        <tr><th>分店 ID</th><th>租借總數</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in storeStats)
+        {
+            <tr>
+                <td>@item.Item1</td>
+                <td>@item.Item2</td>
+            </tr>
+        }
+    </tbody>
+</table>

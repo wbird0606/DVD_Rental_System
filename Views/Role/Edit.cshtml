@@ -1,0 +1,14 @@
+﻿@model RoleModel
+@{
+    ViewBag.Title = "Edit Role";
+}
+<h2>Edit Role</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.RoleId)
+    <p>
+        Name: @Html.TextBoxFor(m => m.RoleName)
+    </p>
+    <button type="submit">Save</button>
+}

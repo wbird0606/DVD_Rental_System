@@ -1,0 +1,14 @@
+﻿@model PermissionModel
+@{
+    ViewBag.Title = "Edit Permission";
+}
+<h2>Edit Permission</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.PermissionId)
+    <p>
+        Name: @Html.TextBoxFor(m => m.PermissionName)
+    </p>
+    <button type="submit">Save</button>
+}

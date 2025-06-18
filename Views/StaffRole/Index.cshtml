@@ -1,0 +1,32 @@
+﻿@model List<StaffRoleModel>
+@{
+    ViewBag.Title = "Staff-Role 對應列表";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("新增對應", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>員工姓名</th>
+            <th>角色名稱</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StaffName</td>
+                <td>@item.RoleName</td>
+                <td>
+                    @Html.ActionLink("刪除", "Delete", new { id = item.StaffRoleId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('確定要刪除這筆對應？');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

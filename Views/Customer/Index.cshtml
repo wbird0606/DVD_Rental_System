@@ -1,0 +1,48 @@
+﻿@model List<DVD_Rental.Models.CustomerViewModel>
+
+@{
+    ViewBag.Title = "📋 客戶清單";
+}
+
+<h2>📋 客戶清單</h2>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>Email</th>
+            <th>門市</th>
+            <th>地址</th>
+            <th>城市</th>
+            <th>國家</th>
+            <th>狀態</th>
+            <th>建立日期</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.CustomerId</td>
+                <td>@c.Name</td>
+                <td>@c.Email</td>
+                <td>@c.StoreId</td>
+                <td>@c.Address</td>
+                <td>@c.City</td>
+                <td>@c.Country</td>
+                <td>
+                    @if (c.IsActive)
+                    {
+                        <span class="badge bg-success">啟用</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">停用</span>
+                    }
+                </td>
+                <td>@c.CreateDate.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    </tbody>
+</table>
